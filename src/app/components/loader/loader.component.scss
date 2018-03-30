@@ -1,0 +1,36 @@
+@import '../../../_variables';
+
+.loader-container {
+    z-index: 99999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(169, 169, 169, .4);
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100vh;
+    .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -64px;
+        width: 80px;
+        height: 80px;
+        border: 16px solid $white;
+        border-radius: 50%;
+        border-top: 16px solid $danube;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+    }
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}

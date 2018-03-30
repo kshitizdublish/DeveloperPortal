@@ -1,0 +1,61 @@
+@import '../../_variables';
+
+.login-component {
+    height: calc(100vh - 121px);
+    overflow-y: auto;
+}
+
+.user-login-panel {
+    margin-top: 5px;
+    width: 30%;
+    position: relative;
+    min-height: 1px;
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 10px;
+    left: 50%;
+    margin-left: -15%;
+    min-width: 320px;
+    box-shadow: 4px 5px 8px $black;
+    @media (max-width: 1067px) {
+        margin-left: -160px;
+    }
+    .help-block {
+        font-size: 11px;
+        color: $mineShaft;
+        width: 70%;
+        position: absolute;
+    }
+    .login-btn-panel {
+        float: right;
+        padding-left: 8px;
+    }
+
+    .password-icon {
+        position: absolute;
+        top: 43%;
+        right: 12%;
+        cursor: pointer;
+    }
+
+    label {
+        font-weight: 600;
+    }
+
+    // login form validation
+    .alert {
+        padding: 2px 5px;
+        margin-bottom: 5px;
+        margin-top: -10px;
+    }
+
+    .error-text {
+        margin-top: -10px;
+        margin-bottom: 5px;
+    }
+
+    .has-error {
+        border: 1px solid $orangePeel;
+    }
+
+}

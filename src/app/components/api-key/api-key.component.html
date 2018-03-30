@@ -1,0 +1,27 @@
+<div class="row api-key-panel">
+
+	<div class="heading">
+		<h1>{{ 'API_KEY.HEADING' | translate }}</h1>
+	</div>
+
+	<div class="region" *ngIf="hasKey">
+		<p>{{ 'API_KEY.TITLE' | translate }}</p>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr class="success">
+						<th class="key-title">{{ 'API_KEY.T_HEAD.COLUMN1' | translate }}</th>
+						<th>{{ 'API_KEY.T_HEAD.COLUMN2' | translate }}</th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr *ngFor="let client of applicationData">
+							<td>{{ client.name }}</td>
+							<td>{{ client.clientId }}</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

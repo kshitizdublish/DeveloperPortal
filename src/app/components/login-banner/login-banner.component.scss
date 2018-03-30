@@ -1,0 +1,15 @@
+@import '../../../_variables';
+
+.login-bannner {
+    text-align: center;    
+    .banner-title {
+        color: $curiousBlue;
+        font-size: 46px;
+        font-weight: 300;
+    }
+    p {
+        color: $mineShaft;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.13);
+        font-size: 18px;
+    }
+}

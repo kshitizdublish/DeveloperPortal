@@ -1,0 +1,15 @@
+/*****************************************************************
+* Proprietary & Confidential | © 2017 PhaseZero Ventures LLC *
+* This is part of PhaseZero Ventures LLC and cannot be copied, *
+* modified and/or distributed without the express permission of *
+* PhaseZero Ventures LLC *
+*****************************************************************/
+/**
+* @author: Kshitiz Dublish
+*/
+
+@mixin breakpoint($min:0, $max:1024px) {
+    @media (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}

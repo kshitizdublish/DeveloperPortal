@@ -1,0 +1,19 @@
+@import '../../../_variables';
+
+.footer-component {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    .copyright-text {
+        color: $white;
+        display: inline-block;
+        padding: 15px 15px 0 15px;
+    }
+    .pzv-footer-logo {
+        float: right;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 30px;
+        background-image: url('../../../assets/images/pzv-logo.png');
+    }
+}

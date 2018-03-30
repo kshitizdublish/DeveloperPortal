@@ -1,0 +1,80 @@
+<div class="row login-component">
+	<pzv-login-banner></pzv-login-banner>
+
+	<div class="user-login-panel">
+		<form name="loginForm" #loginForm="ngForm" (ngSubmit)="submitForm(this.loginDetails)">
+			<div class="form-group">
+				<label>{{ 'LOGIN.USERNAME' | translate}}</label>
+				<input type="text" class="form-control"
+					name="user"
+					maxlength="100" minlength="6"
+					required
+					[(ngModel)]="this.loginDetails.user"
+					#user="ngModel"
+					(keyup)="checkEmptyField('Username', user)"
+					[ngClass]="{'has-error': requiredUserName}">
+			</div>
+			<div *ngIf="requiredUserName" class="error-text">
+					{{ 'LOGIN.VALIDATION.NAME_REQUIRED' | translate }}
+			</div>
+			<div *ngIf="user?.errors?.minlength && user.invalid && (user.dirty || user.touched)"
+				class="error-text">
+				{{ 'LOGIN.VALIDATION.NAME_LENGTH' | translate }}
+			</div>
+		
+			<div class="form-group">
+				<label>{{ 'LOGIN.PASSWORD' | translate}}</label>
+				<input class="form-control"
+					[type]="typePassword === false ? 'password' : 'text'"
+					name="password"
+					required
+					[(ngModel)]="this.loginDetails.password"
+					#password="ngModel"
+					(keyup)="checkEmptyField('Password', password)"
+					[ngClass]="{'has-error': requiredPassword}">
+				<span class="password-icon"
+					*ngIf="showPasswordIcon" (click)="togglePassword()">
+					<i [title]="typePassword === false ? 'Show' : 'Hide'"
+						[ngClass]="typePassword === true ? 'fa fa-eye-slash' : 'fa fa-eye'"
+						aria-hidden="true">
+					</i>
+				</span>
+			</div>
+			<div *ngIf="requiredPassword" class="error-text">
+					{{ 'LOGIN.VALIDATION.PASSWORD_REQUIRED' | translate }}
+			</div>
+
+			<div class="form-group">
+				<label>{{ 'LOGIN.CUSTOMER_ID' | translate}}</label>
+				<input type="text" class="form-control"
+					name="customerId"
+					required
+					[(ngModel)]="this.loginDetails.customerId"
+					#customerId="ngModel"
+					(keyup)="checkEmptyField('customerId', customerId)"
+					[ngClass]="{'has-error': requiredcustomerId}">
+			</div>
+			<div *ngIf="requiredcustomerId" class="error-text">
+				{{ 'LOGIN.VALIDATION.CUSTOMER_REQUIRED' | translate }}
+			</div>
+
+			<div class="row">
+				<div class="help-block col-md-9">
+					{{ 'LOGIN.HELP_BLOCK.PART1' | translate}}
+					<a href="mailto:developer.aftermarket@dana.com">
+						{{ 'LOGIN.HELP_BLOCK.PART2' | translate}}
+					</a>
+					{{ 'LOGIN.HELP_BLOCK.PART3' | translate}}
+				</div>
+				<div class="login-btn-panel col-md-3">
+					<button type="submit" class="btn btn-primary">
+						{{ 'LOGIN.LOGIN_BTN' | translate }}
+					</button>
+				</div>
+			</div>
+		  
+		</form>
+
+	</div>
+
+</div>

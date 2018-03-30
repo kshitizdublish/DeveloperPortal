@@ -1,0 +1,32 @@
+@import '../../../_variables';
+
+.anchor-tag {
+    color: $pictonBlue!important;
+    font-weight: bold;
+}
+
+
+.api-links-list {
+    list-style: none;
+    padding: 0 10px;
+    a {
+        padding: 10px 11px;
+        display:block;
+        text-decoration: none;
+        color: $black;
+        &:focus {
+            @extend .anchor-tag;
+        }
+        &:hover {
+            @extend .anchor-tag;
+        }
+        &:active {
+            outline: none;
+        }
+    }
+
+    .active {
+        @extend .anchor-tag;
+        border-bottom: 1px solid; 
+    }
+}

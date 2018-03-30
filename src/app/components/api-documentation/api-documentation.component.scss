@@ -1,0 +1,47 @@
+@import '../../../_variables';
+
+h1 {
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h3 {
+    border-bottom: 1px solid $alto;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.api-documentation-panel {
+    background-color: $white;
+    height: 100%;
+    padding: 20px 20px 20px 60px;
+    overflow-y: auto;
+    .heading h1 {
+        border-bottom: none;
+        margin-bottom: 20px;
+    }
+    .link-panel {
+        float: right;
+    }
+    .document-panel {
+        border-right: 1px solid $alto;
+    }
+    .api-link-heading h1 {
+        border-bottom: 1px solid $alto;
+    }
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 415px)  {
+    .api-documentation-panel {
+        .link-panel {
+            float: none;
+        }
+        .document-panel {
+            border-right: none;
+        }
+    }
+}

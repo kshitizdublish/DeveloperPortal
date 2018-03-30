@@ -1,0 +1,189 @@
+<div class="row rest-client-panel">
+
+	<div class="col-md-8 col-sm-8">
+		<h1>{{ 'REST_CLIENT.HEADING' | translate }}</h1>
+
+		<div class="row">
+			<form class="col-md-12 col-sm-12" #restClientForm="ngForm" (ngSubmit)="makeApiCall()">
+
+				<div class="well well-sm col-sm-4 form-group method-field">
+					<label class="title">{{ 'REST_CLIENT.FORM.METHOD.HEADING' | translate }}</label>
+					<select class="form-control form-select"
+						name="apiMethod"
+						[(ngModel)]="apiMethod"
+						placement="right"
+						tooltip="{{ 'REST_CLIENT.TOOLTIP_MSG.METHOD' | translate }}"
+						container="body"
+						(change)="apiMethodChange($event.target.value)">
+						<option value="GET" selected="selected">
+							{{ 'REST_CLIENT.FORM.METHOD.OPTION1' | translate }}
+						</option>
+						<option value="POST">
+							{{ 'REST_CLIENT.FORM.METHOD.OPTION2' | translate }}
+						</option>
+					</select>
+				</div>
+
+				<div class="well well-sm col-sm-9 form-group end-point-field">
+					<label class="title">{{ 'REST_CLIENT.FORM.END_POINT' | translate }}</label>
+					<input class="form-control" type="text"
+						name="url"
+						size="60"
+						required
+						maxlength="5000"
+						[(ngModel)]="endPoint"						
+						#urlPath="ngModel"
+						[ngClass]="{'has-error': urlPath.invalid &&
+						(urlPath.dirty || urlPath.touched)}"
+						placement="right"
+						tooltip="{{ 'REST_CLIENT.TOOLTIP_MSG.END_POINT' | translate }}"
+						container="body" />
+					<div class="error-text"
+						*ngIf="urlPath.invalid &&
+							(urlPath.dirty || urlPath.touched) &&
+							urlPath?.errors?.required">
+						{{ 'REST_CLIENT.FORM.END_POINT_REQUIRED' | translate }}
+					</div>
+				</div>
+
+				<div class="col-sm-9 panel-container form-group" *ngIf="apiMethod === 'POST'">
+					<div class="panel panel-default">
+						<div class="panel-heading title">
+							{{ 'REST_CLIENT.FORM.PARAMETERS' | translate }}
+						</div>
+						<div class="panel-body">
+							<div class="dynamic-input-panel"
+								*ngFor="let param of requestParams; let i = index;let last = last">
+								<div class="col-sm-5">
+									<input type="text" class="form-control col-sm-6" placeholder="Key"
+										name="key_{{i}}"
+										[(ngModel)]="param.key" />
+								</div>
+								<div class="col-sm-5">
+									<input type="text" class="form-control col-sm-6" placeholder="Value"
+										name="value_{{i}}"
+										[(ngModel)]="param.value" />
+								</div>
+								<div class="col-sm-2 delete-field">
+									<button type="button" class="delete-field"
+										*ngIf="last"
+										(click)="deleteLastFields('param')"
+										title="{{ 'REST_CLIENT.FORM.DELETE' | translate }}">
+										<i class="fa fa-trash-o fa-2x"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-success add-btn" type="button"
+						(click)="addInputFields('param')"
+						placement="right"
+						tooltip="{{ 'REST_CLIENT.TOOLTIP_MSG.PARAMETERS' | translate }}"
+						container="body">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						{{ 'REST_CLIENT.FORM.ADD_PARAMETERS' | translate }}
+					</button>
+				</div>
+
+				<div class="well well-sm col-sm-9" *ngIf="apiMethod === 'POST'">
+					<label class="title">{{ 'REST_CLIENT.FORM.PAYLOAD' | translate }}</label>
+					<textarea class="form-control form-textarea"
+						placeholder="{{'REST_CLIENT.FORM.PAY_LOAD_HEADER' | translate}}"
+						[ngClass]="invalidJson === true ? 'has-error' : '' "
+						name="payload"
+						[(ngModel)]="payload"
+						placement="right"
+						tooltip="{{ 'REST_CLIENT.TOOLTIP_MSG.PAYLOAD' | translate }}"
+						container="body">
+					</textarea>
+					<div class="error-text" *ngIf="invalidJson">
+						{{ 'REST_CLIENT.FORM.INVALID_JSON' | translate }}
+					</div>
+				</div>
+
+				<div class="col-sm-9 panel-container form-group">
+					<div class="panel panel-default">
+						<div class="panel-heading title">{{ 'REST_CLIENT.FORM.HEADERS' | translate }}</div>
+						<div class="panel-body">
+							<div class="dynamic-input-panel"
+								*ngFor="let header of headers; let i = index; let last = last">
+								<div class="col-sm-5 form-group">
+									<input type="text" class="form-control" placeholder="Key"
+										name="key_{{i}}"
+										[(ngModel)]="header.key" />
+								</div>
+								<div class="col-sm-5 form-group">
+									<input type="text" class="form-control" placeholder="Value"
+										name="value_{{i}}"
+										[(ngModel)]="header.value" />
+								</div>
+								<div class="col-sm-2 delete-field">
+									<button type="button" class="delete-field"
+										*ngIf="last"
+										(click)="deleteLastFields('header')"
+										title="{{ 'REST_CLIENT.FORM.DELETE' | translate }}">
+										<i class="fa fa-trash-o fa-2x"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-success add-btn" type="button"
+						(click)="addInputFields('header')"
+						placement="right"
+						tooltip="{{ 'REST_CLIENT.TOOLTIP_MSG.HEADERS' | translate }}"
+						container="body">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						{{ 'REST_CLIENT.FORM.ADD_HEADERS' | translate }}
+					</button>
+				</div>
+
+				<div class="submit-panel col-sm-9">
+					<button type="submit" class="btn btn-primary"
+						[disabled]="!restClientForm.valid">
+						{{ 'REST_CLIENT.FORM.SEND_BTN' | translate }}
+					</button>
+				</div>
+				<!-- show the User's API response -->
+				<div class="col-sm-9 alert" *ngIf="showResponse"
+					[ngClass]="statusCode === 'Success' ? 'alert-success' : 'alert-danger'">
+					<pre>
+						<p>{{ this.responseObj }}</p>
+					</pre>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-sm-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Example</h4>
+			</div>
+			<div class="panel-body">
+				<ol class="help-info-list">
+					<li>Choose Method as
+						<code>GET</code>
+					</li>
+					<li>In Parameters section, Specify partNumber as Key and 5-280x as Value.
+						<br>
+						<br> e.g.
+						<code> partNumber 5-280x</code>
+					</li>
+					<li>In Headers section, Specify a Header with 'apiKey' as Key and your API Key as Value.
+						<br>
+						<br> e.g.
+						<code> apiKey ZYPH2GqV6iuIpaA</code>
+						<p class="text-info">
+							Note :- The API Key value specified above is a sample and not a valid value. Use the API Key from the API Key tab above.
+						</p>
+					</li>
+					<li>After specifying these values, click on Send to see the API result.</li>
+					<li>Review API Documentation and try with other parameters.</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+</div>

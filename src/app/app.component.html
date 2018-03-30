@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<pzv-loader></pzv-loader>
+<pzv-header></pzv-header>
+<div class="row container-fluid main-container">
+	<div class="row developer-portal-banner" *ngIf="userLoggedIn">
+		<h2>{{ 'DEVELOPER_PORTAL.HEADING' | translate}}</h2>
+	</div>
+	<router-outlet>
+	</router-outlet>
+</div>
+<pzv-footer></pzv-footer>
+<pzv-alert></pzv-alert>

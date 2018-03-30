@@ -1,0 +1,50 @@
+@import '../../../_variables';
+
+.mobile-menu {
+    padding-bottom: 10px;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: $white;
+    margin-top: 16px;
+    &:focus {
+        border: 1px solid $orangePeel;
+        span {
+            border: 1px solid $orangePeel;
+        }
+    }
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: $white;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.navbar-nav {
+    float: right;
+    margin-top: 8px;
+}
+.navbar-right {
+    margin-right: 0;
+}
+.main-nav {
+    margin-bottom: 0;
+    width: 100%;
+}
+.navbar-btn {
+    margin-left: 8px;
+}
+
+.active {
+    color: $pictonBlue!important;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+}

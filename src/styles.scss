@@ -1,0 +1,86 @@
+/*****************************************************************
+* Proprietary & Confidential | © 2017 PhaseZero Ventures LLC *
+* This is part of PhaseZero Ventures LLC and cannot be copied, *
+* modified and/or distributed without the express permission of *
+* PhaseZero Ventures LLC *
+*****************************************************************/
+/**
+* @author: Kshitiz Dublish
+*/
+
+/*
+* you can add global styles to this file,
+* and also import other style files
+*/
+
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+$FontPathOpenSans: '~npm-font-open-sans/fonts';
+$fa-font-path : '~font-awesome/fonts';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import './mixins';
+@import '~npm-font-open-sans/open-sans';
+@import '~font-awesome/scss/font-awesome';
+@import './_variables';
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    background-image: url('./assets/images/background-image.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+@mixin responsive() {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+body {
+    overflow: hidden;
+    min-width: 100%;
+    .container-fluid {
+        max-width: 1520px;
+        padding-left: 0;
+        padding-right: 0;
+        &.main-container {
+            height: calc(100vh - 173px);
+            width: 100%;
+            max-width: 100%;
+            top: 71px;
+            position: absolute;
+        }
+    }
+
+    @media only screen 
+    and (min-device-width : 320px) 
+    and (max-device-width : 768px)  {
+        .container-fluid {
+            &.main-container {
+                height: calc(100vh - 142px);
+                width: 100%;
+            }
+        }
+    }
+    @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  {
+        .container-fluid {
+            &.main-container {
+                height: calc(100vh - 154px);
+                width: 100%;
+            }
+        }
+    }
+
+    label {
+        font-weight: $normal;
+    }
+
+    .error-text {
+        color: $orangePeel;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: right;
+    }
+}

@@ -1,0 +1,16 @@
+@import "../variables";
+
+.developer-portal-banner {
+    background-image: url('/assets/images/blue-strip-developer-portal.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-left: -15px;
+    height: 53px;
+    padding-right: 15px;
+    h2 {
+        margin: 0;
+        padding: 15px;
+        text-align: right;
+        font-size: 20px;
+    }
+}

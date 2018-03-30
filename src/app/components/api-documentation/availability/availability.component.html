@@ -1,0 +1,227 @@
+<div class="availability-doc-panel">
+
+	<h3 class="text-center">Dana Aftermarket Part Availability API</h3>
+	<h3>Introduction</h3>
+	<div>
+		<p>The Part Availability API provides detailed availability information via a simple HTTP REST style API. This allows for
+			faster integration into your existing applications with the programming language of your choice.</p>
+		<p>The API goes beyond providing the availability date and quantity and provides detailed manufacturing plant level information
+			for deeper insight and potential logistics optimization.</p>
+		<p>The API call is secured by the API Key provided to you. This API key is applicable only to you and should be stored securely.</p>
+		<p> The data format for the response message is provided in either JSON or XML.</p>
+		<p> See below for the detailed technical specification of the API.</p>
+	</div>
+	<h3 id="method">HTTP Request Method</h3>
+	<p>GET</p>
+	<h3 id="api-url">API URL</h3>
+	<p>
+		<a href="https://api.danaaftermarket.com/pzp/api/v1/getInventoryAvailability">https://api.danaaftermarket.com/pzp/api/v1/getInventoryAvailability</a>
+	</p>
+	<h3 id="headers">HTTP Request Headers:</h3>
+	<table class="table table-bordered table-condensed col-sm-6">
+		<thead>
+			<tr>
+				<th>Header Field</th>
+				<th>Value</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>apiKey</td>
+				<td>&lt;API_Key&gt; </td>
+				<td>API Key provided in this developer portal should be specified in place of
+					<br> &lt;API_Key&gt;.
+				</td>
+			</tr>
+		</tbody>
+		<tbody></tbody>
+	</table>
+	<h3 id="params">HTTP Request Parameters</h3>
+	<table class="table table-bordered table-condensed col-sm-6">
+		<thead>
+			<tr>
+				<th>Request Parameter</th>
+				<th>Required</th>
+				<th>Default
+					<br>Value</th>
+				<th>Allowed
+					<br>Values</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>partNumber</td>
+				<td>Yes</td>
+				<td>N/A</td>
+				<td></td>
+				<td>Part Number can be Dana part number or customer part number. When partNumber is customer specific, isCustomerPartNumber
+					parameter should be specified as ‘YES’. If the partNumber contain non alpha-numeric characters, the parameter value
+					should be URL encoded.</td>
+			</tr>
+			<tr>
+				<td>format</td>
+				<td>No</td>
+				<td>format</td>
+				<td>json/xml</td>
+				<td>format</td>
+			</tr>
+			<tr>
+				<td>isCustomerPartNumber</td>
+				<td>No</td>
+				<td>NO</td>
+				<td>YES or NO</td>
+				<td>YES – Implies that the partNumber is a customer Interchange part number.
+					<br> NO – Implies that the partNumberis Dana part number.
+				</td>
+			</tr>
+			<tr>
+				<td>orderType</td>
+				<td>No</td>
+				<td>SO</td>
+				<td>SO or EO</td>
+				<td>SO – Stock Order (Parts available on stock)
+					<br> EO – Emergency Order (Parts available on emergency basis. Enhanced information is available with detailed manufacturing
+					plant level visibility)
+				</td>
+			</tr>
+			<tr>
+				<td>qtyRequested</td>
+				<td>No</td>
+				<td>1</td>
+				<td></td>
+				<td>Quantity of the parts required.</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3> HTTP Response Message Structure </h3>
+	<table class="table table-bordered table-condensed col-sm-6">
+		<thead>
+			<tr>
+				<th>Response Field</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>customerId</td>
+				<td>Customer’s Sold-To ID and the SAP Account Number for this customer.</td>
+			</tr>
+			<tr>
+				<td>partDetail</td>
+				<td>An object encapsulating part information and availability</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">partNumber</td>
+				<td>Dana Part Number
+				</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">customerPartNumber</td>
+				<td>Customer Part Number
+				</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">partDesc</td>
+				<td>Part Description</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">qtyReq</td>
+				<td>Quantity requested for Inventory check</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">pkgSize</td>
+				<td>Packaging size of the part
+				</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">totalQtyAvail</td>
+				<td>Total quantity available across all manufacturing plants
+				</td>
+			</tr>
+			<tr>
+				<td class="first-sub-menu">availabilityDtls</td>
+				<td>An array containing individual plant level inventory details</td>
+			</tr>
+			<tr>
+				<td class="second-sub-menu">qtyAvail</td>
+				<td>Quantity available in plant</td>
+			</tr>
+			<tr>
+				<td class="second-sub-menu">leadTimeInDays</td>
+				<td>Time taken in working days to make requested part ready for shipment from plant
+				</td>
+			</tr>
+			<tr>
+				<td class="second-sub-menu">inventoryType</td>
+				<td>Available inventory types:
+					<br>FG (Finished Goods)
+					<br>BULK (Available as Bulk parts for assembly)
+					<br> BTO(Regular Plant Build-To-Order)
+					<br> SLTI (Standard-Lead-Time-Build-To-Order, Parts that cannot be delivered as FG or BTO
+				</td>
+			</tr>
+			<tr>
+				<td class="second-sub-menu">location</td>
+				<td>Plant location details</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">plantCd</td>
+				<td>Plant Code</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">plantName</td>
+				<td>Plant Name
+				</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">plantAddress</td>
+				<td>Plant Address
+				</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">city</td>
+				<td>Plant City</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">state</td>
+				<td>Plant State</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">zipCode</td>
+				<td>Plant Zip
+				</td>
+			</tr>
+			<tr>
+				<td class="third-sub-menu">country</td>
+				<td>Plant Country
+				</td>
+			</tr>
+		</tbody>
+		<tbody></tbody>
+	</table>
+	<h3> HTTP Response Codes</h3>
+	<table class="table table-bordered table-condensed col-sm-6">
+		<thead>
+			<tr>
+				<th>Status Code</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>200</td>
+				<td>Success.</td>
+			</tr>
+			<tr>
+				<td>401</td>
+				<td>Invalid Client. A Valid API Key was not provided</td>
+			</tr>
+			<tr>
+				<td>404</td>
+				<td>Incorrect API Call. Check for any typos in API call.</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

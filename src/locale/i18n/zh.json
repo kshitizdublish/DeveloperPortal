@@ -1,0 +1,87 @@
+{
+	"API_DOCUMENT": {
+		"HEADING": "API Documentation",
+		"API_LIBRARY": "API Library"
+	},
+
+	"DEVELOPER_PORTAL": {
+		"HEADING": "Developer Portal"
+	},
+
+	"HEADER": {
+		"LOGO_TITLE": "Home",
+		"MOBILE_MENU": "Menu",
+		"NAVIGATION_LINKS": {
+			"LINK1": "API Documentation",
+			"LINK2": "Try It!",
+			"LINK3": "API Key",
+			"LINK4": "Log out"
+		}
+	},
+
+	"FOOTER": {
+		"COPY_RIGHT_TEXT": "© 2017 Dana Limited All rights reserved."
+	},
+
+	"API_KEY": {
+		"HEADING": "API Key",
+		"TITLE": "Your API key(s)",
+		"T_HEAD": {
+			"COLUMN1": "Application",
+		    "COLUMN2": "API Key"
+		}
+	},
+
+	"REST_CLIENT": {
+		"HEADING": "Try It!",
+		"FORM": {
+			"METHOD": {
+				"HEADING": "Method",
+				"OPTION1": "GET",
+				"OPTION2": "POST"
+			},
+			"END_POINT": "Endpoint",
+			"END_POINT_REQUIRED": "Url path is required.",
+			"PARAMETERS": "Parameters",
+			"ADD_PARAMETERS": "Add Parameter",
+			"HEADERS": "Headers",
+			"ADD_HEADERS": "Add Headers",
+			"PAYLOAD": "Payload",
+			"PAY_LOAD_HEADER": "Add formatted JSON payload only.",
+			"INVALID_JSON": "Payload data should be in JSON Format.",
+			"SEND_BTN": "Send",
+			"DELETE": "Delete"
+		},
+		"TOOLTIP_MSG": {
+			"METHOD": "Request Method",
+			"END_POINT": "Method and Endpoint are required. Click below to add additional parameters.",
+			"PARAMETERS": "Add Http Parameters.",
+			"HEADERS": "Add Http Headers.",
+			"PAYLOAD": "Add Request Payload in JSON format."
+		}
+	},
+
+	"LOGIN": {
+		"USERNAME": "Username",
+		"PASSWORD": "Password",
+		"CUSTOMER_ID": "Customer No.",
+		"HELP_BLOCK": {
+			"PART1": "Note: For access to this portal, please send us an",
+			"PART2": "email",
+			"PART3": "and we will get in touch."
+		},
+		"LOGIN_BTN": "LOG IN",
+		"VALIDATION": {
+			"NAME_REQUIRED": "Please enter a valid Username",
+			"NAME_LENGTH": "Username must be at least 6 characters long.",
+			"PASSWORD_REQUIRED": "Please enter a Password.",
+			"CUSTOMER_REQUIRED": "Please enter a valid Customer No."
+		}
+	},
+
+	"API_LINKS": {
+		"AVAILABILTIY": "Availability",
+		"QUANTITY": "Quantity"
+	}
+
+}

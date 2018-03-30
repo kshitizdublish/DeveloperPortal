@@ -1,0 +1,6 @@
+<div class="pzv-alert" *ngIf="showAlert">
+	<i [ngClass]="status === 'Error' ? 'fa fa-exclamation-triangle' : 'fa fa-check'"></i>
+	<span class="alert-message">
+		{{ alertMessage }}
+	</span>
+</div>

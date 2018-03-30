@@ -1,0 +1,71 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container main-nav">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse"
+				(click)="showMobileMenu()"
+				aria-expanded="false"
+				data-target="#navbarToggler"
+				title="{{ 'HEADER.MOBILE_MENU' | translate }}"
+				*ngIf="showNavBar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="logo navbar-btn pull-left"
+				href="/api-key" title="{{ 'HEADER.LOGO_TITLE' | translate }}">
+				<img src="./assets/images/logo.png" alt="{{ 'HEADER.LOGO_TITLE' | translate }}">
+			</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarToggler" *ngIf="showNavBar">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a routerLink="/api-documentation" routerLinkActive="active">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK1' | translate }}
+					</a>
+				</li>
+				<li>
+					<a routerLink="/rest-client" routerLinkActive="active">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK2' | translate }}
+					</a>
+				</li>
+				<li>
+					<a routerLink="/api-key" routerLinkActive="active">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK3' | translate }}
+					</a>
+				</li>
+				<li>
+					<a class="profile-logout" href="javascript:void(0)" (click)="onClickLogOut()">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK4' | translate }}
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="mobile-menu" *ngIf="showNavBar && (showMenu === true)">
+			<ul class="nav nav-tabs nav-stacked">
+				<li>
+					<a routerLink="/api-documentation" routerLinkActive="active" (click)="showMobileMenu()">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK1' | translate }}
+					</a>
+				</li>
+				<li>
+					<a routerLink="/rest-client" routerLinkActive="active" (click)="showMobileMenu()">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK2' | translate }}
+					</a>
+				</li>
+				<li>
+					<a routerLink="/api-key" routerLinkActive="active" (click)="showMobileMenu()">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK3' | translate }}
+					</a>
+				</li>
+				<li>
+					<a class="profile-logout" href="javascript:void(0)" (click)="showMobileMenu(); onClickLogOut()">
+						{{ 'HEADER.NAVIGATION_LINKS.LINK4' | translate }}
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
